@@ -1,10 +1,15 @@
-const readline = require('readline');
+const readline = require('readline'); //The node:readline module provides an interface for reading data from a Readable stream (such as process.stdin) one line at a time.
 
+
+//nstances of the InterfaceConstructor class are constructed using the readline.createInterface() method. Every
+//instance is associated with a single input Readable stream and a single output Writable stream.The output stream
+// is used to print prompts for user input that arrives on, and is read from, the input stream.
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
 
+//heavily nested callback functions is called as callback waterfall
 rl.question('What\'s your name ? ', (answer) => {
   console.log(`Thank you for your valuable name: ${answer}`);
 
@@ -23,7 +28,7 @@ rl.question('What\'s your name ? ', (answer) => {
           rl.question('What do you listen to while doing that ? ', (answer) => {
             console.log(`${answer} thats a good choice! you know `);
 
-            rl.close();
+            rl.close();//the Node.js application will not terminate until the readline.Interface is closed because the interface waits for data to be received on the input stream.
           });
         });
       });
